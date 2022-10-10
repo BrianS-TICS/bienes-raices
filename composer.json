@@ -1,0 +1,19 @@
+{
+    "name": "brian/bienesraices",
+    "description": "Creando un proyecto con POO",
+    "type": "preject",
+    "authors": [
+        {
+            "name": "BrianS-TICS",
+            "email": "101915987+BrianS-TICS@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.7"
+    },
+    "autoload" : {
+        "psr-4": {
+            "App\\" : "./classes"
+        }
+    }
+}

@@ -1,0 +1,53 @@
+.crear{ 
+    &.boton-verde{
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+.alerta{
+    padding: .5rem;
+    text-align: center;
+    color: $blanco;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+
+    &.correcto{
+        background-color: $verde;
+    }
+
+    &.error{
+        
+        background-color: $rojo;
+    }
+}
+
+table.propiedades{
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+
+    thead{
+        background-color: $verde;
+        th{
+            color: $blanco;
+            padding: 1rem;
+        }
+    }
+    tbody{
+        text-align: center;
+
+        
+    }
+
+    .imagen-tabla{
+        margin: 0 auto;
+        width: 10rem;
+    }
+}
+
+.imagen-small{
+    margin: 0 auto;
+    width: 30rem;
+}

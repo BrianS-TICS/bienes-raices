@@ -1,0 +1,22 @@
+.boton-amarillo {
+    @include boton($amarillo, inline-block);
+}
+
+.boton-amarillo-block {
+    @include boton($amarillo, block);
+}
+
+.boton-verde {
+    @include boton($verde, inline-block);
+}
+
+.boton-editar-block{
+    @include boton($amarillo, block);
+    margin-top: 0;
+}
+
+.boton-eliminar-block{
+    @include boton($rojo, block);
+    margin-top: 0;
+    width: 100%;
+}
