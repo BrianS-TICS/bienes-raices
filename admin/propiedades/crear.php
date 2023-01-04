@@ -57,14 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $image->save(CARPETA_IMAGENES . $nombreImagen);
 
         // Guarda en la base de datos
-        $resultado = $propiedad->guardar();
-
-        if ($resultado) {
-            echo "Todo correcto";
-            header("Location: /admin?resultado=1");
-        } else {
-            echo $resultado;
-        }
+        $propiedad->guardar();
     }
 }
 

@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'preject',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'f58c6be37844e9030a54efe787abede6b4ecfdf7',
         'name' => 'brian/bienesraices',
         'dev' => true,
     ),
     'versions' => array(
         'brian/bienesraices' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'preject',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'f58c6be37844e9030a54efe787abede6b4ecfdf7',
             'dev_requirement' => false,
         ),
         'guzzlehttp/psr7' => array(
