@@ -3,19 +3,15 @@
 require '../../includes/app.php';
 
 use App\Propiedad;
+use App\Vendedor;
 use Intervention\Image\ImageManagerStatic as Image;
 
 validaAutenticacion();
 
-// Base de datos
-$db = conectarBD();
-
 $propiedad = new Propiedad();
 
-// Consultamos para obtener los vendedores
-$consulta = "SELECT * FROM vendedores";
-
-$respuesta = mysqli_query($db, $consulta);
+// Consulta para obtener vendedores
+$vendedores = Vendedor::all();
 
 // Arreglo con mensajes de errores
 $errores = Propiedad::getErrores();

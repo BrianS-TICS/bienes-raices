@@ -6,10 +6,10 @@ require '../includes/app.php';
 validaAutenticacion();
 
 use App\Propiedad;
-
+use App\Vendedor;
 // Implementar un metodo para obtener todas las propiedades
 $propiedades = Propiedad::all();
-
+$vendedores = Vendedor::all();
 
 // Muestra mensaje condicional en url
 $resultado = $_GET['resultado'] ?? null;

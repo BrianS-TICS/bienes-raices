@@ -8,8 +8,8 @@
 
     <label for="imagen">Imagen:</label>
     <input type="file" accept="image/jpeg, image/png" id="imagen" name="propiedad[imagen]" name="imagen">
-    <?php if($propiedad -> imagen) : ?>
-        <img src="/imagenes/<?php echo $propiedad->imagen?>" class="imagen-small" alt="imagen de propiedad">
+    <?php if ($propiedad->imagen) : ?>
+        <img src="/imagenes/<?php echo $propiedad->imagen ?>" class="imagen-small" alt="imagen de propiedad">
     <?php endif; ?>
 
     <label for="descripcion">Descripcion</label>
@@ -33,5 +33,11 @@
 
 <fieldset>
     <legend>Vendedor</legend>
-    
+    <label for="vendedor">Vendedor</label>
+    <select name="propiedad[$vendedorId]" id="vendedor">
+        <option value=""> -- Seleccione -- </option>
+        <?php foreach ($vendedores as $vendedor) { ?>
+            <option <?php echo $propiedad->vendedorId === $vendedor->id ? 'selected' : ''; ?> value="<?php echo sanitizar($vendedor->id) ?>"> <?php echo sanitizar($vendedor->nombre) . ' ' . sanitizar($vendedor->apellido); ?></option>
+        <?php  } ?>
+    </select>
 </fieldset>
