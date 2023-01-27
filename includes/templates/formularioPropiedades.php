@@ -7,7 +7,7 @@
     <input type="number" maxlength="10" minlength="1" id="precio" placeholder="Precio de propiedad" name="propiedad[precio]" value="<?php echo sanitizar($propiedad->precio); ?>">
 
     <label for="imagen">Imagen:</label>
-    <input type="file" accept="image/jpeg, image/png" id="imagen" name="propiedad[imagen]" name="imagen">
+    <input type="file" accept="image/jpeg, image/png" id="imagen" name="propiedad[imagen]">
     <?php if ($propiedad->imagen) : ?>
         <img src="/imagenes/<?php echo $propiedad->imagen ?>" class="imagen-small" alt="imagen de propiedad">
     <?php endif; ?>
@@ -34,7 +34,7 @@
 <fieldset>
     <legend>Vendedor</legend>
     <label for="vendedor">Vendedor</label>
-    <select name="propiedad[$vendedorId]" id="vendedor">
+    <select name="propiedad[vendedorId]" id="vendedor">
         <option value=""> -- Seleccione -- </option>
         <?php foreach ($vendedores as $vendedor) { ?>
             <option <?php echo $propiedad->vendedorId === $vendedor->id ? 'selected' : ''; ?> value="<?php echo sanitizar($vendedor->id) ?>"> <?php echo sanitizar($vendedor->nombre) . ' ' . sanitizar($vendedor->apellido); ?></option>

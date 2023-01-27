@@ -1,6 +1,7 @@
 <?php
 
 use App\Propiedad;
+use App\Vendedor;
 use Intervention\Image\ImageManagerStatic as Image;
 
 require '../../includes/app.php';
@@ -10,12 +11,13 @@ validaAutenticacion();
 $id = ($_GET["id"]);
 $id = filter_var($id, FILTER_VALIDATE_INT);
 
-if(!$id){
+if (!$id) {
     header('Location: /admin'); // Si se modifica el id redireccionamos
 }
 
 // Obtener los datos de la propiedad
 $propiedad = Propiedad::find($id);
+$venderores = Vendedor::all();
 
 // Consultamos para obtener los vendedores
 $consulta = "SELECT * FROM vendedores";
@@ -32,13 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Asignar los atributos
     $args = $_POST['propiedad'];
 
-    $propiedad -> sincronizar($args);
-    
+    $propiedad->sincronizar($args);
+
     // Validacion
     $errores = $propiedad->validar();
 
     // Generar un nombre unico
-    $nombreImagen = md5( uniqid( rand(), true )) . ".jpg";
+    $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
     // Subida de archivos
     if ($_FILES['propiedad']['tmp_name']['imagen']) {
@@ -47,13 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
-    if(empty($errores)){
-
-        // Almacenar la imagen
-        $image->save(CARPETA_IMAGENES . $nombreImagen);
-
+    if (empty($errores)) {
+        if ($_FILES['propiedad']['tmp_name']['imagen']) {
+            // Almacenar la imagen
+            $image->save(CARPETA_IMAGENES . $nombreImagen);
+        }
         $propiedad->guardar();
-
     }
 }
 
@@ -72,9 +73,9 @@ incluirTemplate('header');
 
     <form class="formulario" method="POST" enctype="multipart/form-data">
         <?php
-           include '../../includes/templates/formularioPropiedades.php' 
+        include '../../includes/templates/formularioPropiedades.php'
         ?>
-        
+
         <input type="submit" value="Guardar cambios" class="boton-verde">
 
     </form>

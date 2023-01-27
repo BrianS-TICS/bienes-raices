@@ -90,7 +90,7 @@ class ActiveRecord
     public function atributos()
     {
         $atributos = [];
-        foreach (self::$columnasBD as $columna) {
+        foreach (static::$columnasBD as $columna) {
             if ($columna === "id") {
                 continue;
             } //Hace que ignore el ciclo
@@ -138,45 +138,13 @@ class ActiveRecord
     // Validacion
     public static function getErrores()
     {
-        return self::$errores;
+        return static::$errores;
     }
 
     public function validar()
     {
-        if (!$this->titulo) {
-            self::$errores[] = "Debes añadir un titulo";
-        }
-
-        if (!$this->precio) {
-            self::$errores[] = "Debes añadir un precio";
-        }
-
-        if (strlen($this->descripcion) < 50) {
-            self::$errores[] = "Debes añadir una descripcion con al menos 50 caracteres";
-        }
-
-        if (!$this->habitaciones) {
-            self::$errores[] = "Debes añadir el numero de habitaciones";
-        }
-
-        if (!$this->wc) {
-            self::$errores[] = "Debes añadir el numero de baños";
-        }
-
-        if (!$this->estacionamiento) {
-            self::$errores[] = "Debes añadir el numero de estacionamientos";
-        }
-
-        if (!$this->vendedorId) {
-            self::$errores[] = "Elige un vendedor";
-        }
-
-        // Validar imagen
-        if (!$this->imagen) {
-            self::$errores[] = "Debes agregar una imagen";
-        }
-
-        return self::$errores;
+        static::$errores = [];
+        return static::$errores;
     }
     // Lista todos los registros
     public static function all()
@@ -206,7 +174,7 @@ class ActiveRecord
         $array = [];
 
         while ($registro = $resultado->fetch_assoc()) {
-            $array[] = self::crearObjeto($registro);
+            $array[] = static::crearObjeto($registro);
         }
 
         // Liberar memoria 
