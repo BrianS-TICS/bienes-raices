@@ -6,7 +6,16 @@ use App\Vendedor;
 
 validaAutenticacion();
 
-$vendedor = new Vendedor();
+$id = $_GET['id'];
+
+$id = filter_var($id, FILTER_VALIDATE_INT);
+
+if (!$id) {
+    header('Location: /admin');
+}
+
+// Obtener vendedor desde bd
+$vendedor = Vendedor::find($id);
 
 // Arreglo con mensajes de errores
 $errores = Vendedor::getErrores();
@@ -14,6 +23,17 @@ $errores = Vendedor::getErrores();
 // Ejecuta el codigo despues del submit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    // Se sincroniza la peticion con la instancia
+    $args = $_POST['vendedor'];
+
+    $vendedor->sincronizar($args);
+
+    // Validacion
+    $errores = $vendedor->validar();
+
+    if (empty($errores)) {
+        $vendedor->guardar();
+    }
 }
 
 incluirTemplate('header');
@@ -29,7 +49,7 @@ incluirTemplate('header');
         </div>
     <?php endforeach; ?>
 
-    <form class="formulario" method="POST" action="/admin/vendedores/actualizar.php" enctype="multipart/form-data">
+    <form class="formulario" method="POST">
         <?php include '../../includes/templates/formularioVendedores.php' ?>
 
         <input type="submit" value="Guardar cambios" class="boton-verde">
