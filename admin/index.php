@@ -44,16 +44,15 @@ incluirTemplate('header');
 <main class="contenedor seccion">
     <h1>Administrador de bienes raices</h1>
 
-    <?php if (intval($resultado) === 1) : ?>
-        <p class="alerta correcto"> Creado correctamente </p>
+    <?php
+        $mensaje = mostrarNotificacion(intval($resultado));
 
-    <?php elseif (intval($resultado) === 2) : ?>
-        <p class="alerta correcto"> Editado correctamente </p>
-
-    <?php elseif (intval($resultado) === 3) : ?>
-        <p class="alerta correcto"> Eliminado correctamente </p>
-
-    <?php endif ?>
+        if ($mensaje) {
+            ?>
+                <p class="alerta exito"><?php echo sanitizar($mensaje); ?></p>
+            <?php
+        }
+    ?>
 
     <a href="/admin/propiedades/crear.php" class="boton boton-verde">Nueva propiedad</a>
     <a href="/admin/vendedores/crear.php" class="boton boton-amarillo">Nuevo vendedor</a>
