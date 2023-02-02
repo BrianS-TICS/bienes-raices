@@ -156,10 +156,21 @@ class ActiveRecord
         return $resultado;
     }
 
+    // Lista todos los registros
+    public static function get($cantidad)
+    {
+        $query = "SELECT * FROM " . static::$tabla . " LIMIT " . $cantidad;
+
+        $resultado = self::consultarSql($query);
+
+        return $resultado;
+    }
+
+
     // Busca un registro por su id
     public static function find($id)
     {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE id = ". $id ."";
+        $query = "SELECT * FROM " . static::$tabla . " WHERE id = " . $id . "";
         $resultado = self::consultarSql($query);
 
         return (array_shift($resultado));

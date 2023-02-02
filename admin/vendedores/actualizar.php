@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Se sincroniza la peticion con la instancia
     $args = $_POST['vendedor'];
-
     $vendedor->sincronizar($args);
 
     // Validacion
